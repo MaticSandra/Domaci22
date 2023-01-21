@@ -44,10 +44,10 @@ public class LoginTest {
 
         WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]"));
         loginButton.click();
-        String text1 = loginButton.getText();
-        String text2 = "https://vue-demo.daniel-avellaneda.com/login";
+        String actualUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://vue-demo.daniel-avellaneda.com/login";
 
-        Assert.assertTrue(text2.contains(text1.toLowerCase()));
+        Assert.assertTrue(actualUrl.contains("/login"));
 
 
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -55,7 +55,6 @@ public class LoginTest {
 
         WebElement email = driver.findElement(By.id("email"));
         String actualEmail = email.getAttribute("type");
-        System.out.println(actualEmail);
         String expectedTitle = "email";
 
 
